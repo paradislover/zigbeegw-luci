@@ -48,7 +48,7 @@ define Package/luci-app-zigbeegw/postinst
 endef
 
 define Package/luci-app-zigbeegw/conffiles
-  /etc/config/zigbeegw
+/etc/config/zigbeegw
 endef
 
 $(eval $(call BuildPackage,luci-app-zigbeegw))
