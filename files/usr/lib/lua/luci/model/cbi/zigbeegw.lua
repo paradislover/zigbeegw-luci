@@ -17,7 +17,7 @@ enable = s:taboption("basic", Flag, "enabled", translate("Enable"))
 
 device = s:taboption("basic", Value, "device", translate("Device"),translate("Default Device is /dev/ttyUSB0"))
 
-path = s:taboption("basic", Value, "path", translate("Path"),translate("Default Path is /tmp/zigbeegw/"))
+path = s:taboption("basic", Value, "path", translate("Database Path"),translate("Default Database Path is /tmp/zigbeegw/"))
 
 s:taboption("basic", DummyValue,"opennewwindow" ,translate("<br /><p align=\"justify\"><script type=\"text/javascript\"></script><input type=\"button\" class=\"cbi-button cbi-button-apply\" value=\"Home Automation\" onclick=\"window.open('http://'+window.location.host+':8000')\" /></p>"), detailInfo)
 
