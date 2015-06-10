@@ -1,0 +1,30 @@
+#!/bin/sh /etc/rc.common
+
+START=70
+STOP=70
+APP='zigbeegw'
+
+start() {
+        config_load "$APP"
+        local enabled device path
+        config_get enabled config enabled
+        config_get device config device
+        config_get path config path
+        [ "$enabled" = '0' ] && {
+                stop
+                return 0
+        }
+        service_start /usr/bin/zigbeegw \
+            -d "`ls /dev/ttyUSB*`" \
+            -p ${path} & sleep 1
+}
+
+stop() {
+        service_stop /usr/bin/zigbeegw
+}
+
+restart() {
+        stop
+        sleep 1
+        start
+}

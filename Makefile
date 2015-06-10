@@ -32,9 +32,11 @@ endef
 define Package/luci-app-zigbeegw/install
 	$(CP) ./files/* $(1)
 	$(INSTALL_DIR) $(1)/etc/init.d
-	$(INSTALL_BIN) ./zigbeegw.init $(1)/etc/init.d/zigbeegw
+	$(INSTALL_BIN) ./init.d/zigbeegw.init $(1)/etc/init.d/zigbeegw
 	$(INSTALL_DIR) $(1)/etc/config
-	$(INSTALL_CONF) ./zigbeegw.conf $(1)/etc/config/zigbeegw
+	$(INSTALL_CONF) ./init.d/zigbeegw.conf $(1)/etc/config/zigbeegw
+	$(INSTALL_DIR) $(1)/etc/hotplug.d/usb
+	$(INSTALL_CONF) ./hotplug.d/30-mrvldongle $(1)/etc/hotplug.d/usb/
 endef
 
 define Package/luci-app-zigbeegw/postinst

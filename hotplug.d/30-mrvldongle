@@ -1,0 +1,22 @@
+#!/bin/sh
+
+MRVL_PRODID='403/6015/1000'
+MRVL_TYPE='0/0/0'
+MRVL_IFACE='255/255/255'
+
+if [ "${PRODUCT}" = "${MRVL_PRODID}" ]; then
+        if [ "${INTERFACE}" = "${MRVL_IFACE}" ]; then
+                if [ "${ACTION}" = "add" ]; then
+                        DEVICE_NAME=$(ls /dev/* | grep ttyUSB)
+                        if [ -z ${DEVICE_NAME} ]; then
+                                logger -t Hotplug Warning DEVICE_NAME is empty
+                                exit
+                        fi
+                        logger -t Hotplug Device of Marvell MZ100 Dongle is $DEVICE_NAME
+                        /etc/init.d/zigbeegw restart
+                fi
+                if [ "${ACTION}" = "remove" ]; then
+                        /etc/init.d/zigbeegw stop
+                fi
+        fi
+fi
